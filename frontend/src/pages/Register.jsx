@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { User, Mail, Lock, UserPlus } from 'lucide-react';
+import { User, Mail, Lock, UserPlus, Eye, EyeOff } from 'lucide-react';
 
 const Register = ({ onSwitchToLogin, addToast }) => {
   const { register } = useContext(AuthContext);
@@ -8,6 +8,8 @@ const Register = ({ onSwitchToLogin, addToast }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -137,13 +139,33 @@ const Register = ({ onSwitchToLogin, addToast }) => {
               }} />
               <input
                 id="register-password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 className="neo-input"
                 placeholder="At least 6 characters"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ paddingLeft: '48px' }}
+                style={{ paddingLeft: '48px', paddingRight: '48px' }}
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  color: 'var(--text-light)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
             {errors.password && (
               <span style={{ fontSize: '12px', color: 'var(--color-danger)', marginTop: '4px', display: 'block', paddingLeft: '4px' }}>
@@ -164,13 +186,33 @@ const Register = ({ onSwitchToLogin, addToast }) => {
               }} />
               <input
                 id="register-confirm-password"
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 className="neo-input"
                 placeholder="Repeat password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                style={{ paddingLeft: '48px' }}
+                style={{ paddingLeft: '48px', paddingRight: '48px' }}
               />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  color: 'var(--text-light)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
             {errors.confirmPassword && (
               <span style={{ fontSize: '12px', color: 'var(--color-danger)', marginTop: '4px', display: 'block', paddingLeft: '4px' }}>
