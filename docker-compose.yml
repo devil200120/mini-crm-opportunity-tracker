@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - MONGO_URI=mongodb+srv://subhankar_db_user:Sd%401234!@vpn-cluster.lzeihrf.mongodb.net/crm_project
+      - JWT_SECRET=super_secret_jwt_key_crm_project_2026_!!
+      - JWT_EXPIRE=2h
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: always
