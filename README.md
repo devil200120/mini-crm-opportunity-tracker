@@ -625,3 +625,4 @@ To run this deployment, the VPS requires:
    * **Why & Benefits:** The current opportunity activity logs are simple text notes. Upgrading this to support rich-text formatting, file uploads (PDF contracts, image proposals), and user @mentions would enable richer team collaboration.
 4. **Soft Deletions (Recycle Bin):**
    * **Why & Benefits:** Deletions are currently permanent database purges to fulfill basic CRUD requirements. Implementing a "Soft Delete" strategy (using a `deletedAt` timestamp) or a "Recycle Bin" screen would allow recovering accidentally deleted deals.
+
