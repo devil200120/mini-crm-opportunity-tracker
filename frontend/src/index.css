@@ -678,3 +678,35 @@ body.dark .neo-btn-primary {
     color: var(--accent-color) !important;
   }
 }
+
+/* Neumorphic Eye button for password visibility toggle */
+.neo-eye-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+  transition: all var(--transition-speed) ease;
+  padding: 0;
+  z-index: 10;
+}
+
+.neo-eye-btn:hover {
+  color: var(--accent-color);
+  box-shadow: inset 1px 1px 3px var(--shadow-dark), inset -1px -1px 3px var(--shadow-light);
+}
+
+.neo-eye-btn:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
